@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  frontend:
+    image: clientimage
+    ports:
+      - "80:80"
+    networks:
+      - docker-dem
+
+  backend:
+    image: serverimage
+    ports:
+      - "5000:5000"
+    networks:
+      - docker-dem
+networks:
+  docker-dem:
+    driver: bridge

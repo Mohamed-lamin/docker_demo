@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+      integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Docker Demo</title>
+  </head>
+  <body>
+    <main
+      class="container mx-auto min-h-screen w-full flex justify-center items-center"
+    >
+      <div class="h-full w-full flex justify-center items-center flex-col">
+        <button onClick="trigger()" class="bg-orange-500 rounded-md my-2">
+          Trigger
+        </button>
+        <button
+          onClick="{show.innerHTML=''}"
+          class="bg-blue-500 rounded-md my-2"
+        >
+          Dismiss
+        </button>
+        <h1 id="show"></h1>
+      </div>
+    </main>
+    <script>
+      const show = document.getElementById("show")
+      const trigger = async () => {
+        const { data } = await axios.get("http://localhost:5000")
+        show.innerHTML = data
+      }
+    </script>
+  </body>
+</html>
